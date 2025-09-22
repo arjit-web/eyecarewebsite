@@ -48,6 +48,10 @@ app.get("/shop", (req, res) => {
   res.sendFile(path.join(__dirname, "shop.html"));
 });
 
+app.get("/favicon.ico", (req, res) => {
+  res.sendFile(path.join(__dirname, "images/favicon.png"));
+});
+
 
 
 app.use("/images", express.static(path.join(__dirname, "images")));
