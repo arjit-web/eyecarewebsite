@@ -53,7 +53,7 @@ app.get("/shop", (req, res) => {
 app.use("/images", express.static(path.join(__dirname, "images")));
 
 app.use("/api", require('./modules/Appointment'));
-
+app.use("/api", require('./modules/Contact'));
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
