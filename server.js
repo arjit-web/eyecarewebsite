@@ -8,7 +8,15 @@ const PORT = process.env.PORT || 3000;
 
 app.use("/", express.static(path.join(__dirname, "images")));
 
-// Fallback route (for single-page apps)
+
+
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'OK', timestamp: new Date().toISOString() });
+});
+
+
+
+// all routes
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
