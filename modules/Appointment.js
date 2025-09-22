@@ -901,10 +901,9 @@ app.post('/book-appointment', async (req, res) => {
     };
 
     // Send both emails
-    await Promise.all([
-      transporter.sendMail(adminMailOptions),
-      transporter.sendMail(patientMailOptions)
-    ]);
+
+    await transporter.sendMail(adminMailOptions);
+    await transporter.sendMail(patientMailOptions);
 
     res.json({
       success: true,
