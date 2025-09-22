@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use("/", express.static(path.join(__dirname, "images")));
 
-app.use("/", require('./Appointment'));
+app.use("/api", require('./Appointment'));
 
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });

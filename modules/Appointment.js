@@ -28,7 +28,7 @@ transporter.verify((error, success) => {
 });
 
 // API endpoint to handle appointment booking
-app.post('/api/book-appointment', async (req, res) => {
+app.post('/book-appointment', async (req, res) => {
   try {
     const { name, phone, email, service, date, time } = req.body;
     
