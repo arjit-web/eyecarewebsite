@@ -6,6 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 
+app.use("/img", express.static(path.join(__dirname, "images")));
 
 // Fallback route (for single-page apps)
 app.get("/", (req, res) => {
@@ -15,3 +16,4 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
 });
+
