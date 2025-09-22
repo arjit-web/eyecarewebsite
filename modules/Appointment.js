@@ -6,11 +6,11 @@ const app = express.Router();
 
 // Nodemailer configuration
 const transporter = nodemailer.createTransport({
-  service: 'gmail', // or your email service
+  service: "gmail",
   auth: {
-    user: process.env.EMAIL_USER, // Your email
-    pass: process.env.EMAIL_PASS  // Your app password
-  }
+    user: process.env.MAIL_USER,
+    pass: process.env.MAIL_PASS,
+  },
 });
 
 // Test email configuration
@@ -26,7 +26,7 @@ transporter.verify((error, success) => {
 app.post('/book-appointment', async (req, res) => {
   try {
     const { name, phone, email, service, date, time } = req.body;
-    
+
     // Validation
     if (!name || !phone || !email || !service || !date || !time) {
       return res.status(400).json({
@@ -919,11 +919,5 @@ app.post('/book-appointment', async (req, res) => {
     });
   }
 });
-
-
-
-
-
-
 
 module.exports = app;
