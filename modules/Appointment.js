@@ -8,18 +8,9 @@ const app = express.Router();
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: process.env.MAIL_USER,
-    pass: process.env.MAIL_PASS,
+    user: 'harshiteyecareandopticals@gmail.com',
+    pass: 'gjvphdnkykwzfboy',
   },
-});
-
-// Test email configuration
-transporter.verify((error, success) => {
-  if (error) {
-    console.log('Email configuration error:', error);
-  } else {
-    console.log('Email server is ready to send messages');
-  }
 });
 
 // API endpoint to handle appointment booking
