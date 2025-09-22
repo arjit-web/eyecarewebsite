@@ -6,11 +6,15 @@ const app = express.Router();
 
 // Nodemailer configuration
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true, // true for 465, false for 587
   auth: {
     user: 'harshiteyecareandopticals@gmail.com',
     pass: 'gjvphdnkykwzfboy',
   },
+  connectionTimeout: 10000 // 10 seconds timeout
 });
 
 // API endpoint to handle appointment booking
