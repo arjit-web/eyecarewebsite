@@ -8,14 +8,6 @@ app.use(express.json());
 
 
 
-app.use("/images", express.static(path.join(__dirname, "images")));
-
-app.use("/api", require('./modules/Appointment'));
-
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'OK', timestamp: new Date().toISOString() });
-});
-
 
 
 // all routes
@@ -55,6 +47,17 @@ app.get("/services", (req, res) => {
 app.get("/shop", (req, res) => {
   res.sendFile(path.join(__dirname, "shop.html"));
 });
+
+
+
+app.use("/images", express.static(path.join(__dirname, "images")));
+
+app.use("/api", require('./modules/Appointment'));
+
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'OK', timestamp: new Date().toISOString() });
+});
+
 
 
 app.listen(PORT, () => {
