@@ -3,11 +3,6 @@ const nodemailer = require('nodemailer');
 
 const app = express.Router();
 
-// Middleware
-app.use(express.json());
-
-
-
 
 // Nodemailer configuration
 const transporter = nodemailer.createTransport({
