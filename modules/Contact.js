@@ -360,12 +360,7 @@ router.post('/contact', async (req, res) => {
             <div class="footer-logo">Harshit Eye Care & Opticals</div>
             <div class="footer-tagline">Trusted eye care & eyewear since 2018</div>
             
-            <div class="footer-links">
-              <a href="#">Dashboard</a>
-              <a href="#">Appointments</a>
-              <a href="#">Patients</a>
-              <a href="#">Settings</a>
-            </div>
+   
             
             <div class="copyright">
               © ${new Date().getFullYear()} Harshit Eye Care & Opticals. All rights reserved.<br>
