@@ -1,5 +1,6 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,45 +11,183 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    * { box-sizing: border-box; margin:0; padding:0; }
-    body { font-family: 'Inter', sans-serif; background: #f9fafb; color: #1f2937; line-height:1.7; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f9fafb;
+      color: #1f2937;
+      line-height: 1.7;
+    }
 
     /* Header */
-    header { background:#ffffff; box-shadow:0 2px 8px rgba(0,0,0,0.08); position:sticky; top:0; z-index:10; }
-    header .container { max-width:1200px; margin:auto; padding:1rem 2rem; display:flex; justify-content:space-between; align-items:center; }
-    .logo { font-weight:700; font-size:1.4rem; color:#4f46e5; }
-    nav { display:flex; gap:1.5rem; }
-    nav a { text-decoration:none; color:#374151; font-weight:500; transition:0.2s; }
-    nav a:hover { color:#4f46e5; }
-    .menu-toggle { display:none; font-size:1.5rem; cursor:pointer; }
-    @media(max-width:768px){
-      nav { display:none; flex-direction:column; background:#fff; position:absolute; top:70px; right:20px; padding:1rem 2rem; box-shadow:0 4px 12px rgba(0,0,0,0.1); border-radius:8px; }
-      nav.show { display:flex; }
-      .menu-toggle { display:block; }
+    header {
+      background: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: #4f46e5;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #374151;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+
+    nav a:hover {
+      color: #4f46e5;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    @media(max-width:768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background: #fff;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        padding: 1rem 2rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
     }
 
     /* Blog Post */
-    .blog-post { max-width:900px; margin:2rem auto; padding:0 1.5rem; }
-    .blog-post h1 { font-size:2rem; font-weight:700; margin-bottom:0.5rem; color:#111827; }
-    .blog-meta { font-size:0.9rem; color:#6b7280; margin-bottom:1.5rem; }
-    .blog-post img { width:100%; border-radius:10px; margin:1.5rem 0; }
-    .blog-post p { margin-bottom:1rem; font-size:1rem; color:#374151; }
-    .blog-post h2 { font-size:1.3rem; margin:1.5rem 0 0.75rem; color:#111827; }
+    .blog-post {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .blog-post h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #111827;
+    }
+
+    .blog-meta {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-bottom: 1.5rem;
+    }
+
+    .blog-post img {
+      width: 100%;
+      border-radius: 10px;
+      margin: 1.5rem 0;
+    }
+
+    .blog-post p {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      color: #374151;
+    }
+
+    .blog-post h2 {
+      font-size: 1.3rem;
+      margin: 1.5rem 0 0.75rem;
+      color: #111827;
+    }
 
     /* Navigation */
-    .post-nav { display:flex; justify-content:space-between; margin:2rem 0; }
-    .post-nav a { text-decoration:none; color:#4f46e5; font-weight:600; }
+    .post-nav {
+      display: flex;
+      justify-content: space-between;
+      margin: 2rem 0;
+    }
+
+    .post-nav a {
+      text-decoration: none;
+      color: #4f46e5;
+      font-weight: 600;
+    }
 
     /* Footer */
-    footer { background:#1f2937; color:#f9fafb; padding:3rem 2rem; margin-top:2rem; }
-    footer .container { max-width:1200px; margin:auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:2rem; font-size:0.9rem; }
-    footer a { text-decoration:none; color:#d1d5db; }
-    footer a:hover { color:#ffffff; }
-    footer .text-muted { color:#9ca3af; font-size:0.85rem; margin-top:1rem; }
-    .social-links a { font-size:1.2rem; margin-right:12px; display:inline-block; transition:0.3s; }
-    .social-links a:hover { color:#6366f1; }
+    footer {
+      background: #1f2937;
+      color: #f9fafb;
+      padding: 3rem 2rem;
+      margin-top: 2rem;
+    }
+
+    footer .container {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      text-decoration: none;
+      color: #d1d5db;
+    }
+
+    footer a:hover {
+      color: #ffffff;
+    }
+
+    footer .text-muted {
+      color: #9ca3af;
+      font-size: 0.85rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      font-size: 1.2rem;
+      margin-right: 12px;
+      display: inline-block;
+      transition: 0.3s;
+    }
+
+    .social-links a:hover {
+      color: #6366f1;
+    }
   </style>
 </head>
+
 <body>
   <!-- Header -->
   <header>
@@ -56,13 +195,13 @@
       <div class="logo">Harshit Eye Care & Opticals</div>
       <div class="menu-toggle" id="menu-toggle">☰</div>
       <nav id="menu">
-        <a href="index.html">Home</a>
-        <a href="about.html">About Us</a>
-        <a href="testing.html">Eye Testing</a>
-        <a href="services.html">Our Services</a>
-        <a href="shop.html">Shop</a>
-        <a href="blog.html">Blog</a>
-        <a href="contact.html">Contact</a>
+        <a href="/index">Home</a>
+        <a href="/about">About Us</a>
+        <a href="/testing">Eye Testing</a>
+        <a href="/services">Our Services</a>
+        <a href="/shop">Shop</a>
+        <a href="/blog">Blog</a>
+        <a href="/contact">Contact</a>
       </nav>
     </div>
   </header>
@@ -72,65 +211,109 @@
     <h1>5 Signs You Need New Glasses</h1>
     <div class="blog-meta">By Dr. Shivam Tomar · September 18, 2025</div>
     <img src="/blog1.webp" alt="Eye Care">
-    
-    <p>Your eyes are one of the most vital organs in your body, responsible for helping you navigate and interpret the world around you. Just like any other part of your body, your eyes’ needs change over time. Many people underestimate the importance of updating their prescription glasses, assuming that if their current pair still “works,” there’s no need for a change. However, continuing to wear outdated lenses can lead to eye strain, headaches, and even long-term vision problems. Here are five clear signs that it might be time to invest in a new pair of glasses.</p>
-    
+
+    <p>Your eyes are one of the most vital organs in your body, responsible for helping you navigate and interpret the
+      world around you. Just like any other part of your body, your eyes’ needs change over time. Many people
+      underestimate the importance of updating their prescription glasses, assuming that if their current pair still
+      “works,” there’s no need for a change. However, continuing to wear outdated lenses can lead to eye strain,
+      headaches, and even long-term vision problems. Here are five clear signs that it might be time to invest in a new
+      pair of glasses.</p>
+
     <h2>1. Frequent Headaches</h2>
-    <p>One of the most common signs that your current glasses are no longer suitable is frequent headaches, particularly around the eyes, temples, or forehead. Headaches caused by vision problems often occur after activities that require focusing, such as reading, working on a computer, or driving.</p>
-    <p>When your lenses do not match your current vision needs, your eyes have to work harder to focus on objects, causing tension in the eye muscles. Over time, this strain translates into persistent headaches. If you notice that pain diminishes when you remove your glasses or blink frequently, it’s a strong indicator that your prescription has changed and new glasses are needed.</p>
-    
+    <p>One of the most common signs that your current glasses are no longer suitable is frequent headaches, particularly
+      around the eyes, temples, or forehead. Headaches caused by vision problems often occur after activities that
+      require focusing, such as reading, working on a computer, or driving.</p>
+    <p>When your lenses do not match your current vision needs, your eyes have to work harder to focus on objects,
+      causing tension in the eye muscles. Over time, this strain translates into persistent headaches. If you notice
+      that pain diminishes when you remove your glasses or blink frequently, it’s a strong indicator that your
+      prescription has changed and new glasses are needed.</p>
+
     <h2>2. Blurry or Distorted Vision</h2>
-    <p>Blurry vision is another clear signal that your eyes are struggling to see clearly with your current lenses. You may notice that objects at a distance appear hazy, or reading small print becomes more challenging. Distortion can also manifest as wavy lines, double vision, or trouble judging distances, all of which may indicate that your prescription is no longer accurate.</p>
-    <p>If your vision feels consistently blurry despite wearing your glasses, it’s important to schedule an eye examination. Continuing to strain your eyes with the wrong lenses can lead to worsening vision over time, and in some cases, can contribute to long-term eye health issues like myopia progression in children or eye fatigue in adults.</p>
-    
+    <p>Blurry vision is another clear signal that your eyes are struggling to see clearly with your current lenses. You
+      may notice that objects at a distance appear hazy, or reading small print becomes more challenging. Distortion can
+      also manifest as wavy lines, double vision, or trouble judging distances, all of which may indicate that your
+      prescription is no longer accurate.</p>
+    <p>If your vision feels consistently blurry despite wearing your glasses, it’s important to schedule an eye
+      examination. Continuing to strain your eyes with the wrong lenses can lead to worsening vision over time, and in
+      some cases, can contribute to long-term eye health issues like myopia progression in children or eye fatigue in
+      adults.</p>
+
     <h2>3. Increased Eye Strain or Fatigue</h2>
-    <p>Another key sign you need new glasses is eye strain or fatigue, which usually becomes noticeable after extended periods of visual activity. Symptoms may include:</p>
+    <p>Another key sign you need new glasses is eye strain or fatigue, which usually becomes noticeable after extended
+      periods of visual activity. Symptoms may include:</p>
     <ul>
       <li>Dry or watery eyes</li>
       <li>Burning or itching sensations</li>
       <li>Sensitivity to light</li>
       <li>Difficulty keeping your eyes open</li>
     </ul>
-    <p>Eye strain often occurs when the eyes work harder than they should to compensate for a weak or outdated prescription. This is particularly common for people who spend long hours in front of screens, as improper lens correction can exacerbate digital eye strain. Modern lenses are designed to reduce glare and improve focus, but if your prescription is off, even the best lenses cannot provide relief.</p>
-    
+    <p>Eye strain often occurs when the eyes work harder than they should to compensate for a weak or outdated
+      prescription. This is particularly common for people who spend long hours in front of screens, as improper lens
+      correction can exacerbate digital eye strain. Modern lenses are designed to reduce glare and improve focus, but if
+      your prescription is off, even the best lenses cannot provide relief.</p>
+
     <h2>4. Trouble Seeing at Night</h2>
-    <p>If you find yourself struggling to see clearly in low-light conditions, such as while driving at night or walking in dimly lit areas, it may be time for new glasses. Night vision problems often manifest as halos around lights, glare from headlights, or difficulty distinguishing objects.</p>
-    <p>These issues can occur due to an outdated prescription, but they may also indicate the onset of other eye conditions such as cataracts or astigmatism. Nighttime vision problems increase the risk of accidents, making it especially important to address the issue promptly. A comprehensive eye exam can determine whether updated glasses or additional corrective measures are needed to restore clear vision in low-light environments.</p>
-    
+    <p>If you find yourself struggling to see clearly in low-light conditions, such as while driving at night or walking
+      in dimly lit areas, it may be time for new glasses. Night vision problems often manifest as halos around lights,
+      glare from headlights, or difficulty distinguishing objects.</p>
+    <p>These issues can occur due to an outdated prescription, but they may also indicate the onset of other eye
+      conditions such as cataracts or astigmatism. Nighttime vision problems increase the risk of accidents, making it
+      especially important to address the issue promptly. A comprehensive eye exam can determine whether updated glasses
+      or additional corrective measures are needed to restore clear vision in low-light environments.</p>
+
     <h2>5. Your Glasses Are Physically Damaged or Outdated</h2>
-    <p>Even if your vision hasn’t changed dramatically, physical damage to your glasses—such as scratches, bent frames, or loose screws—can affect how well they function. Scratched lenses scatter light, causing glare and blurry vision, while poorly fitting frames can misalign the lenses from your eyes, reducing visual clarity.</p>
-    <p>In addition, as fashion and technology evolve, your glasses might not be offering the best comfort or features. Modern lenses often include anti-reflective coatings, blue-light filtering for screen use, and lightweight materials for better durability and comfort. Investing in a new pair not only improves your vision but also enhances your daily comfort and eye protection.</p>
-    
+    <p>Even if your vision hasn’t changed dramatically, physical damage to your glasses—such as scratches, bent frames,
+      or loose screws—can affect how well they function. Scratched lenses scatter light, causing glare and blurry
+      vision, while poorly fitting frames can misalign the lenses from your eyes, reducing visual clarity.</p>
+    <p>In addition, as fashion and technology evolve, your glasses might not be offering the best comfort or features.
+      Modern lenses often include anti-reflective coatings, blue-light filtering for screen use, and lightweight
+      materials for better durability and comfort. Investing in a new pair not only improves your vision but also
+      enhances your daily comfort and eye protection.</p>
+
     <h2>Additional Signs to Watch For</h2>
-    <p>While the five signs above are the most common indicators that it’s time for new glasses, there are other subtle signs you should pay attention to, including:</p>
+    <p>While the five signs above are the most common indicators that it’s time for new glasses, there are other subtle
+      signs you should pay attention to, including:</p>
     <ul>
       <li>Squinting frequently to see distant or close objects</li>
       <li>Difficulty focusing when switching between near and far tasks</li>
       <li>Persistent dizziness or motion sensitivity when reading or driving</li>
       <li>Increased sensitivity to sunlight or bright lights</li>
     </ul>
-    
+
     <h2>Why Regular Eye Exams Matter</h2>
-    <p>Many people wait until they experience serious discomfort before updating their glasses, but regular eye exams are essential for maintaining long-term eye health. Eye exams not only ensure that your prescription is accurate, but they can also detect early signs of serious conditions such as glaucoma, cataracts, or macular degeneration.</p>
-    <p>It is generally recommended that adults have a comprehensive eye exam every one to two years, depending on age, vision needs, and overall eye health. Children and teenagers may require more frequent checkups, especially if they are experiencing rapid vision changes.</p>
-    
+    <p>Many people wait until they experience serious discomfort before updating their glasses, but regular eye exams
+      are essential for maintaining long-term eye health. Eye exams not only ensure that your prescription is accurate,
+      but they can also detect early signs of serious conditions such as glaucoma, cataracts, or macular degeneration.
+    </p>
+    <p>It is generally recommended that adults have a comprehensive eye exam every one to two years, depending on age,
+      vision needs, and overall eye health. Children and teenagers may require more frequent checkups, especially if
+      they are experiencing rapid vision changes.</p>
+
     <h2>Tips for Choosing the Right Glasses</h2>
     <p>Once you’ve identified the need for new glasses, selecting the right pair is crucial. Here are some tips:</p>
     <ul>
       <li>Update your prescription: Ensure your new glasses reflect your latest eye exam results.</li>
-      <li>Consider lens enhancements: Anti-reflective coatings, photochromic lenses, and blue-light filters can improve comfort and eye protection.</li>
-      <li>Choose frames wisely: Comfortable, well-fitting frames prevent slipping and ensure optimal lens alignment.</li>
+      <li>Consider lens enhancements: Anti-reflective coatings, photochromic lenses, and blue-light filters can improve
+        comfort and eye protection.</li>
+      <li>Choose frames wisely: Comfortable, well-fitting frames prevent slipping and ensure optimal lens alignment.
+      </li>
       <li>Prioritize durability: Look for scratch-resistant and lightweight materials for everyday wear.</li>
-      <li>Evaluate your lifestyle needs: For example, if you spend long hours in front of screens, lenses with digital eye strain protection are recommended.</li>
+      <li>Evaluate your lifestyle needs: For example, if you spend long hours in front of screens, lenses with digital
+        eye strain protection are recommended.</li>
     </ul>
-    
+
     <h2>Conclusion</h2>
-    <p>Your eyes are priceless, and taking care of them should be a priority. Frequent headaches, blurry vision, eye strain, trouble seeing at night, and damaged frames are all warning signs that your glasses may no longer meet your vision needs. Ignoring these symptoms can not only reduce your quality of life but may also lead to long-term eye problems.</p>
-    <p>Regular eye exams, timely updates to your prescription, and choosing the right pair of glasses can make a world of difference in maintaining clear vision and overall eye health. Don’t wait until discomfort or headaches become unbearable—invest in new glasses and give your eyes the care they deserve.</p>
+    <p>Your eyes are priceless, and taking care of them should be a priority. Frequent headaches, blurry vision, eye
+      strain, trouble seeing at night, and damaged frames are all warning signs that your glasses may no longer meet
+      your vision needs. Ignoring these symptoms can not only reduce your quality of life but may also lead to long-term
+      eye problems.</p>
+    <p>Regular eye exams, timely updates to your prescription, and choosing the right pair of glasses can make a world
+      of difference in maintaining clear vision and overall eye health. Don’t wait until discomfort or headaches become
+      unbearable—invest in new glasses and give your eyes the care they deserve.</p>
 
     <div class="post-nav">
-      <a href="blog.html">← Previous Post</a>
-      <a href="blog-post2.html">Next Post →</a>
+      <a href="/blog">← Previous Post</a>
+      <a href="/blog/post/2">Next Post →</a>
     </div>
   </section>
 
@@ -144,10 +327,10 @@
       <div>
         <strong>Quick Links</strong>
         <ul>
-          <li><a href="about.html">About</a></li>
-          <li><a href="shop.html">Shop</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/shop">Shop</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/contact">Contact</a></li>
         </ul>
       </div>
       <div>
@@ -173,7 +356,8 @@
     document.getElementById('year').textContent = new Date().getFullYear();
     const toggle = document.getElementById('menu-toggle');
     const menu = document.getElementById('menu');
-    toggle.addEventListener('click',()=>menu.classList.toggle('show'));
+    toggle.addEventListener('click', () => menu.classList.toggle('show'));
   </script>
 </body>
+
 </html>
