@@ -860,13 +860,6 @@ app.post('/book-appointment', async (req, res) => {
               </a>
             </div>
             
-            <div class="footer-links">
-              <a href="#">About Us</a>
-              <a href="#">Eye Testing</a>
-              <a href="#">Our Services</a>
-              <a href="#">Shop</a>
-              <a href="#">Contact</a>
-            </div>
             
             <div class="copyright">
               © ${new Date().getFullYear()} Harshit Eye Care & Opticals. All rights reserved.<br>
