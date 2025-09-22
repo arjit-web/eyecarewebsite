@@ -892,7 +892,7 @@ app.post('/api/book-appointment', async (req, res) => {
     // Send email to admin
     const adminMailOptions = {
       from: process.env.EMAIL_USER,
-      to: process.env.ADMIN_EMAIL, // Admin email
+      to: 'krishna2421w@gmail.com', // Admin email
       subject: `🗓️ New Appointment Request - ${name}`,
       html: adminEmailHtml
     };
