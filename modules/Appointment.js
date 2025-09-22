@@ -828,7 +828,7 @@ app.post('/book-appointment', async (req, res) => {
               <div style="margin-bottom: 1rem; opacity: 0.9;">
                 Our friendly team is here to help with any questions or concerns you may have about your upcoming appointment.
               </div>
-              <a href="https://wa.me/918896005699" class="whatsapp-btn" target="_blank">
+              <a href="https://wa.me/918896006599" class="whatsapp-btn" target="_blank">
                 <i class="fab fa-whatsapp"></i>
                 Chat with us on WhatsApp
               </a>
@@ -855,7 +855,7 @@ app.post('/book-appointment', async (req, res) => {
               <a href="https://twitter.com" target="_blank" title="Twitter">
                 <i class="fab fa-twitter"></i>
               </a>
-              <a href="https://wa.me/918896005699" target="_blank" title="WhatsApp">
+              <a href="https://wa.me/918896006599" target="_blank" title="WhatsApp">
                 <i class="fab fa-whatsapp"></i>
               </a>
             </div>
