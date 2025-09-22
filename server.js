@@ -8,7 +8,7 @@ app.use(express.json());
 
 
 
-app.use("/", express.static(path.join(__dirname, "images")));
+app.use("/images", express.static(path.join(__dirname, "images")));
 
 app.use("/api", require('./modules/Appointment'));
 
