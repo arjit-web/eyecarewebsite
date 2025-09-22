@@ -159,11 +159,55 @@
       cursor: pointer;
       font-weight: 600;
       transition: 0.3s;
+      width: 100%;
     }
 
     .btn:hover {
       background: #4338ca;
       transform: translateY(-2px);
+    }
+
+    .btn:disabled {
+      background: #9ca3af;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Loading spinner */
+    .spinner {
+      display: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #ffffff;
+      border-top: 2px solid transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-right: 10px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Success/Error Messages */
+    .message {
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    .message.success {
+      background: #d1fae5;
+      border: 1px solid #34d399;
+      color: #065f46;
+    }
+
+    .message.error {
+      background: #fee2e2;
+      border: 1px solid #f87171;
+      color: #991b1b;
     }
 
     /* Footer */
@@ -225,7 +269,6 @@
         <a href="/shop">Shop</a>
         <a href="/blog">Blog</a>
         <a href="/contact">Contact</a>
-
       </nav>
     </div>
   </header>
@@ -235,38 +278,44 @@
     <h1>Book an Appointment</h1>
     <p>Schedule your eye test or consultation with our experts in just a few clicks.</p>
     <div class="card">
+      <!-- Message container -->
+      <div id="message" class="message"></div>
+      
       <form id="appointmentForm">
         <div class="form-group">
           <label for="name"><i class="fa fa-user"></i> Full Name</label>
-          <input type="text" id="name" required />
+          <input type="text" id="name" name="name" required />
         </div>
         <div class="form-group">
           <label for="phone"><i class="fa fa-phone"></i> Phone Number</label>
-          <input type="tel" id="phone" required />
+          <input type="tel" id="phone" name="phone" required />
         </div>
         <div class="form-group">
           <label for="email"><i class="fa fa-envelope"></i> Email Address</label>
-          <input type="email" id="email" required />
+          <input type="email" id="email" name="email" required />
         </div>
         <div class="form-group">
           <label for="service"><i class="fa fa-stethoscope"></i> Select Service</label>
-          <select id="service" required>
+          <select id="service" name="service" required>
             <option value="">-- Choose a service --</option>
-            <option>Eye Test</option>
-            <option>Glasses Consultation</option>
-            <option>Contact Lenses</option>
-            <option>Eye Care Advice</option>
+            <option value="Eye Test">Eye Test</option>
+            <option value="Glasses Consultation">Glasses Consultation</option>
+            <option value="Contact Lenses">Contact Lenses</option>
+            <option value="Eye Care Advice">Eye Care Advice</option>
           </select>
         </div>
         <div class="form-group">
           <label for="date"><i class="fa fa-calendar"></i> Preferred Date</label>
-          <input type="date" id="date" required />
+          <input type="date" id="date" name="date" required />
         </div>
         <div class="form-group">
           <label for="time"><i class="fa fa-clock"></i> Preferred Time</label>
-          <input type="time" id="time" required />
+          <input type="time" id="time" name="time" required />
         </div>
-        <button type="submit" class="btn"><i class="fa fa-check-circle"></i> Book Now</button>
+        <button type="submit" class="btn" id="submitBtn">
+          <span class="spinner" id="spinner"></span>
+          <span id="btnText"><i class="fa fa-check-circle"></i> Book Now</span>
+        </button>
       </form>
     </div>
   </section>
@@ -312,11 +361,103 @@
     const menu = document.getElementById('menu');
     toggle.addEventListener('click', () => menu.classList.toggle('show'));
 
+    // Set minimum date to today
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('date').setAttribute('min', today);
+
     // Appointment Form Handling
-    document.getElementById('appointmentForm').addEventListener('submit', function (e) {
+    document.getElementById('appointmentForm').addEventListener('submit', async function (e) {
       e.preventDefault();
-      alert("✅ Appointment booked successfully! We’ll contact you soon.");
-      this.reset();
+      
+      const submitBtn = document.getElementById('submitBtn');
+      const spinner = document.getElementById('spinner');
+      const btnText = document.getElementById('btnText');
+      const messageDiv = document.getElementById('message');
+      
+      // Show loading state
+      submitBtn.disabled = true;
+      spinner.style.display = 'inline-block';
+      btnText.innerHTML = 'Booking...';
+      messageDiv.style.display = 'none';
+      
+      // Get form data
+      const formData = new FormData(this);
+      const appointmentData = {
+        name: formData.get('name'),
+        phone: formData.get('phone'),
+        email: formData.get('email'),
+        service: formData.get('service'),
+        date: formData.get('date'),
+        time: formData.get('time')
+      };
+      
+      try {
+        // Send appointment data to API
+        const response = await fetch('/api/book-appointment', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(appointmentData)
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+          // Show success message
+          messageDiv.className = 'message success';
+          messageDiv.innerHTML = `
+            <i class="fa fa-check-circle"></i> 
+            ${result.message}
+          `;
+          messageDiv.style.display = 'block';
+          
+          // Reset form
+          this.reset();
+          
+          // Scroll to top to show message
+          messageDiv.scrollIntoView({ behavior: 'smooth' });
+          
+        } else {
+          throw new Error(result.message);
+        }
+        
+      } catch (error) {
+        // Show error message
+        messageDiv.className = 'message error';
+        messageDiv.innerHTML = `
+          <i class="fa fa-exclamation-circle"></i> 
+          ${error.message || 'Failed to book appointment. Please try again.'}
+        `;
+        messageDiv.style.display = 'block';
+        messageDiv.scrollIntoView({ behavior: 'smooth' });
+      } finally {
+        // Reset button state
+        submitBtn.disabled = false;
+        spinner.style.display = 'none';
+        btnText.innerHTML = '<i class="fa fa-check-circle"></i> Book Now';
+      }
+    });
+
+    // Phone number validation (Indian format)
+    document.getElementById('phone').addEventListener('input', function(e) {
+      let value = e.target.value.replace(/\D/g, '');
+      if (value.length > 10) {
+        value = value.slice(0, 10);
+      }
+      e.target.value = value;
+    });
+
+    // Email validation
+    document.getElementById('email').addEventListener('blur', function(e) {
+      const email = e.target.value;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      
+      if (email && !emailRegex.test(email)) {
+        e.target.setCustomValidity('Please enter a valid email address');
+      } else {
+        e.target.setCustomValidity('');
+      }
     });
   </script>
 </body>
