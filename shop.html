@@ -1,0 +1,239 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop - Harshit Eye Care & Opticals</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:'Inter', sans-serif; background:#f4f5f7; color:#1f2937; line-height:1.6; }
+
+    /* Header */
+    header { background:#ffffff; box-shadow:0 2px 8px rgba(0,0,0,0.08); position:sticky; top:0; z-index:10; }
+    header .container { max-width:1200px; margin:auto; padding:1rem 2rem; display:flex; justify-content:space-between; align-items:center; }
+    .logo { font-weight:700; font-size:1.4rem; color:#4f46e5; }
+    nav { display:flex; gap:1.5rem; }
+    nav a { text-decoration:none; color:#374151; font-weight:500; transition:0.2s; }
+    nav a:hover { color:#4f46e5; }
+    .menu-toggle { display:none; font-size:1.5rem; cursor:pointer; }
+    @media(max-width:768px){
+      nav { display:none; flex-direction:column; background:#fff; position:absolute; top:70px; right:20px; padding:1rem 2rem; box-shadow:0 4px 12px rgba(0,0,0,0.1); border-radius:8px; }
+      nav.show { display:flex; }
+      .menu-toggle { display:block; }
+    }
+
+    /* Shop */
+    .shop { max-width:1200px; margin:auto; padding:3rem 2rem; }
+    .shop h1 { font-size:2rem; font-weight:700; text-align:center; margin-bottom:2rem; color:#111827; }
+    .shop-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem; }
+    .product-card { background:#fff; border-radius:15px; padding:1.5rem; text-align:center; box-shadow:0 2px 12px rgba(0,0,0,0.08); transition:0.3s; }
+    .product-card:hover { transform:translateY(-5px); box-shadow:0 4px 18px rgba(0,0,0,0.12); }
+    .product-card img { width:100%; height:180px; object-fit:cover; border-radius:10px; margin-bottom:1rem; }
+    .product-card h3 { font-size:1.1rem; margin-bottom:0.5rem; color:#111827; }
+    .product-card p { font-size:0.95rem; color:#4b5563; }
+    .product-card span { font-weight:600; color:#4f46e5; font-size:1rem; display:block; margin-top:0.5rem; }
+
+    /* Footer */
+    footer { background:#1f2937; color:#f9fafb; padding:3rem 2rem; margin-top:2rem; }
+    footer .container { max-width:1200px; margin:auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:2rem; font-size:0.9rem; }
+    footer a { text-decoration:none; color:#d1d5db; }
+    footer a:hover { color:#ffffff; }
+    footer .text-muted { color:#9ca3af; font-size:0.85rem; margin-top:1rem; }
+    .social-links a { font-size:1.2rem; margin-right:12px; display:inline-block; transition:0.3s; }
+    .social-links a:hover { color:#6366f1; }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="logo">Harshit Eye Care & Opticals</div>
+      <div class="menu-toggle" id="menu-toggle">☰</div>
+      <nav id="menu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="testing.html">Eye Testing</a>
+        <a href="services.html">Our Services</a>
+        <a href="shop.html">Shop</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Shop -->
+  <section class="shop">
+    <h1>Our Eyewear Collection</h1>
+    <div class="shop-grid">
+      <!-- 20 Product Cards -->
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1516466723877-e4ec1d736c8a" alt="Classic Black Frame">
+        <h3>Classic Black Frame</h3>
+        <p>Durable everyday wear</p>
+        <span>₹1,499</span>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1524253482453-3fed8d2fe12b" alt="Round Glasses">
+        <h3>Trendy Round Glasses</h3>
+        <p>Retro-inspired design</p>
+        <span>₹1,899</span>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc" alt="Blue Light Glasses">
+        <h3>Blue Light Blockers</h3>
+        <p>Protects against screen strain</p>
+        <span>₹2,299</span>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1589571894960-20bbe2828d0a" alt="Premium Aviators">
+        <h3>Premium Aviators</h3>
+        <p>Timeless & stylish</p>
+        <span>₹2,999</span>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1591076482161-1f5f91e5fd10" alt="Silver Frame">
+        <h3>Metallic Silver Frame</h3>
+        <p>Lightweight & modern</p>
+        <span>₹2,199</span>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1522336572468-97b06e8ef143" alt="Cat Eye">
+        <h3>Stylish Cat Eye</h3>
+        <p>Perfect for bold looks</p>
+        <span>₹2,499</span>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f" alt="Sporty Sunglasses">
+        <h3>Sporty Sunglasses</h3>
+        <p>Outdoor performance</p>
+        <span>₹3,299</span>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1577803645773-f96470509666" alt="Kids Glasses">
+        <h3>Kids Glasses</h3>
+        <p>Comfortable for little ones</p>
+        <span>₹1,199</span>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1535448588855-4c0b3d4f3fbb" alt="Half Rim Glasses">
+        <h3>Half Rim Frames</h3>
+        <p>Lightweight design</p>
+        <span>₹1,799</span>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1521119989659-a83eee488004" alt="Rimless Glasses">
+        <h3>Rimless Glasses</h3>
+        <p>Minimalist style</p>
+        <span>₹2,399</span>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1581089781785-603411fa81e6" alt="Polarized Sunglasses">
+        <h3>Polarized Shades</h3>
+        <p>Glare reduction lenses</p>
+        <span>₹3,599</span>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1511497584788-876760111969" alt="Wayfarer Glasses">
+        <h3>Classic Wayfarer</h3>
+        <p>All-time favorite</p>
+        <span>₹2,899</span>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1591077141319-3e0eaf6d8f76" alt="Square Frame">
+        <h3>Square Frames</h3>
+        <p>Strong & bold design</p>
+        <span>₹2,199</span>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93" alt="Oversized Glasses">
+        <h3>Oversized Frames</h3>
+        <p>Statement-making style</p>
+        <span>₹2,999</span>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1591076482161-1f5f91e5fd10" alt="Gold Frame">
+        <h3>Golden Frames</h3>
+        <p>Elegant & premium</p>
+        <span>₹3,499</span>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1530845640090-9b9c37f1f02d" alt="Retro Round">
+        <h3>Retro Round Frames</h3>
+        <p>Vintage vibes</p>
+        <span>₹1,999</span>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1516222338250-863216ce01c1" alt="Transparent Glasses">
+        <h3>Transparent Frames</h3>
+        <p>Modern crystal look</p>
+        <span>₹2,499</span>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1589571894960-20bbe2828d0a" alt="Luxury Aviators">
+        <h3>Luxury Aviators</h3>
+        <p>High-end design</p>
+        <span>₹4,199</span>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1577733966970-30c8d6e6ad1c" alt="Reading Glasses">
+        <h3>Reading Glasses</h3>
+        <p>For clear vision up close</p>
+        <span>₹1,299</span>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86" alt="Designer Frames">
+        <h3>Designer Frames</h3>
+        <p>Premium & stylish</p>
+        <span>₹4,999</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div>
+        <strong>Harshit Eye Care & Opticals</strong>
+        <p class="text-muted">Trusted eye care & eyewear since 2018.</p>
+      </div>
+      <div>
+        <strong>Quick Links</strong>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>Payments</strong>
+        <p class="text-muted">UPI · Paytm · Credit Card</p>
+      </div>
+      <div>
+        <strong>Follow Us</strong>
+        <div class="social-links" style="margin-top:0.5rem;">
+          <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="https://wa.me/918896005699" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="text-muted" style="text-align:center; margin-top:1rem;">
+      © <span id="year"></span> Harshit Eye Care & Opticals. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+    toggle.addEventListener('click',()=>menu.classList.toggle('show'));
+  </script>
+</body>
+</html>

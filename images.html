@@ -1,0 +1,165 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Images - Harshit Eye Care & Opticals</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background: #f9fafb; color: #111827; }
+    header { background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.1); position: sticky; top:0; z-index:10; }
+    header .container { max-width: 1100px; margin: auto; padding: 1rem; display: flex; justify-content: space-between; align-items: center; }
+    nav { display: flex; flex-wrap: wrap; }
+    nav a { margin: 0.5rem; text-decoration: none; color: #374151; font-size: 14px; }
+    nav a:hover { color: #4f46e5; }
+    .menu-toggle { display: none; cursor: pointer; font-size: 1.5rem; }
+    .menu { display: flex; }
+    .menu.open { display: block; }
+    @media (max-width: 768px) {
+      .menu { display: none; flex-direction: column; background: #fff; padding: 1rem; box-shadow: 0 2px 6px rgba(0,0,0,0.1); position: absolute; top: 60px; right: 10px; }
+      .menu a { margin: 0.5rem 0; }
+      .menu-toggle { display: block; }
+    }
+
+    .section { max-width: 1100px; margin: auto; padding: 2rem 1rem; }
+    h1 { font-size: 2rem; margin-bottom: 1rem; text-align: center; }
+    p { color: #4b5563; text-align: center; margin-bottom: 2rem; }
+
+    /* Gallery Grid */
+    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; }
+    .gallery img { width: 100%; height: 220px; object-fit: cover; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.3s; }
+    .gallery img:hover { transform: scale(1.05); }
+
+    /* Lightbox */
+    .lightbox { display: none; position: fixed; z-index: 100; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; }
+    .lightbox img { max-width: 90%; max-height: 80%; border-radius: 12px; }
+    .lightbox.active { display: flex; }
+    .lightbox .close, .lightbox .prev, .lightbox .next {
+      position: absolute; top: 50%; transform: translateY(-50%); font-size: 2rem; color: white; cursor: pointer; padding: 0.5rem; user-select: none;
+    }
+    .lightbox .close { top: 20px; right: 30px; font-size: 2rem; transform: none; }
+    .lightbox .prev { left: 30px; }
+    .lightbox .next { right: 30px; }
+
+    footer { background: #fff; border-top: 1px solid #e5e7eb; margin-top: 2rem; }
+    footer .container { max-width: 1100px; margin: auto; padding: 2rem 1rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1.5rem; font-size: 14px; }
+    footer ul { list-style: none; padding: 0; margin: 0; }
+    footer li { margin: 0.25rem 0; }
+    .text-muted { color: #6b7280; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="logo"><strong>Harshit Eye Care & Opticals</strong></div>
+      <div class="menu-toggle" id="menu-toggle">☰</div>
+      <nav class="menu" id="menu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="testing.html">Eye Testing</a>
+        <a href="shop.html">Shop</a>
+        <a href="blog.html">Blog</a>
+        <a href="images.html">Images</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Images Section -->
+  <section class="section">
+    <h1>Our Gallery</h1>
+    <p>Explore images of our shop, services, and eyewear collection at Harshit Eye Care & Opticals.</p>
+    
+    <div class="gallery" id="gallery">
+      <!-- 20 Images -->
+      <img src="images/img1.jpg" alt="Shop Image 1">
+      <img src="images/img2.jpg" alt="Shop Image 2">
+      <img src="images/img3.jpg" alt="Shop Image 3">
+      <img src="images/img4.jpg" alt="Shop Image 4">
+      <img src="images/img5.jpg" alt="Shop Image 5">
+      <img src="images/img6.jpg" alt="Shop Image 6">
+      <img src="images/img7.jpg" alt="Shop Image 7">
+      <img src="images/img8.jpg" alt="Shop Image 8">
+      <img src="images/img9.jpg" alt="Shop Image 9">
+      <img src="images/img10.jpg" alt="Shop Image 10">
+      <img src="images/img11.jpg" alt="Shop Image 11">
+      <img src="images/img12.jpg" alt="Shop Image 12">
+      <img src="images/img13.jpg" alt="Shop Image 13">
+      <img src="images/img14.jpg" alt="Shop Image 14">
+      <img src="images/img15.jpg" alt="Shop Image 15">
+      <img src="images/img16.jpg" alt="Shop Image 16">
+      <img src="images/img17.jpg" alt="Shop Image 17">
+      <img src="images/img18.jpg" alt="Shop Image 18">
+      <img src="images/img19.jpg" alt="Shop Image 19">
+      <img src="images/img20.jpg" alt="Shop Image 20">
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <span class="close" id="close">&times;</span>
+    <span class="prev" id="prev">&#10094;</span>
+    <img id="lightbox-img" src="" alt="Preview">
+    <span class="next" id="next">&#10095;</span>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div>
+        <strong>Harshit Eye Care & Opticals</strong>
+        <p class="text-muted">Trusted eye care & eyewear since 2018.</p>
+      </div>
+      <div>
+        <strong>Quick Links</strong>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>Payments</strong>
+        <p class="text-muted">UPI · Paytm · Credit Card</p>
+      </div>
+    </div>
+    <div class="text-muted" style="text-align:center; padding:1rem; border-top:1px solid #e5e7eb;">
+      © <span id="year"></span> Harshit Eye Care & Opticals. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+    toggle.addEventListener('click', () => menu.classList.toggle('open'));
+
+    // Lightbox Script
+    const gallery = document.getElementById('gallery');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.getElementById('close');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    let currentIndex = 0;
+    const images = Array.from(gallery.querySelectorAll('img'));
+
+    gallery.addEventListener('click', e => {
+      if(e.target.tagName === 'IMG') {
+        currentIndex = images.indexOf(e.target);
+        showImage(currentIndex);
+        lightbox.classList.add('active');
+      }
+    });
+
+    closeBtn.addEventListener('click', () => lightbox.classList.remove('active'));
+    prevBtn.addEventListener('click', () => { currentIndex = (currentIndex - 1 + images.length) % images.length; showImage(currentIndex); });
+    nextBtn.addEventListener('click', () => { currentIndex = (currentIndex + 1) % images.length; showImage(currentIndex); });
+
+    function showImage(index) {
+      lightboxImg.src = images[index].src;
+    }
+  </script>
+</body>
+</html>
