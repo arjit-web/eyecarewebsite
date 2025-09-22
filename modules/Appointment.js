@@ -11,8 +11,8 @@ const transporter = nodemailer.createTransport({
   port: 465,
   secure: true, // true for 465, false for 587
   auth: {
-    user: 'harshiteyecareandopticals@gmail.com',
-    pass: 'gjvphdnkykwzfboy',
+    user: process.env.EMAIL_USER ,
+    pass: process.env.EMAIL_PASS,
   },
   connectionTimeout: 10000 // 10 seconds timeout
 });
