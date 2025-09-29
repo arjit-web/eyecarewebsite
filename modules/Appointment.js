@@ -65,7 +65,7 @@ app.post('/book-appointment', async (req, res) => {
             background: #f4f5f7;
             color: #1f2937;
             line-height: 1.6;
-            padding: 20px;
+            padding: 10px;
           }
           .email-container {
             max-width: 650px;
@@ -78,7 +78,7 @@ app.post('/book-appointment', async (req, res) => {
           .header {
             background: #4f46e5;
             color: #ffffff;
-            padding: 2rem;
+            padding: 1rem;
             text-align: center;
             position: relative;
           }
@@ -90,65 +90,67 @@ app.post('/book-appointment', async (req, res) => {
             transform: translateX(-50%);
             width: 0;
             height: 0;
-            border-left: 20px solid transparent;
-            border-right: 20px solid transparent;
-            border-top: 20px solid #4f46e5;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 15px solid #4f46e5;
           }
           .logo {
             font-weight: 700;
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
           }
           .header-subtitle {
             opacity: 0.9;
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
           }
           .notification-badge {
             background: rgba(255, 255, 255, 0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
             display: inline-block;
             font-weight: 600;
+            font-size: 0.9rem;
           }
           .content {
-            padding: 2rem;
+            padding: 1.5rem;
             background: #ffffff;
           }
           .intro-text {
             color: #4b5563;
-            margin-bottom: 1.5rem;
-            font-size: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
           }
           .appointment-card {
             background: #f8f9fa;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-left: 4px solid #4f46e5;
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 3px solid #4f46e5;
           }
           .detail-grid {
             display: grid;
-            gap: 1rem;
+            gap: 0.5rem;
           }
           .detail-item {
             display: flex;
             align-items: center;
-            padding: 0.75rem;
+            padding: 0.5rem;
             background: #ffffff;
-            border-radius: 8px;
+            border-radius: 6px;
             border: 1px solid #e5e7eb;
+            font-size: 0.9rem;
           }
           .detail-icon {
             color: #4f46e5;
-            font-size: 1.1rem;
-            width: 24px;
-            margin-right: 12px;
+            font-size: 1rem;
+            width: 20px;
+            margin-right: 8px;
           }
           .detail-label {
             font-weight: 600;
             color: #374151;
-            min-width: 120px;
+            min-width: 100px;
           }
           .detail-value {
             color: #1f2937;
@@ -156,19 +158,20 @@ app.post('/book-appointment', async (req, res) => {
           }
           .action-section {
             background: #f3f4f6;
-            border-radius: 10px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
           }
           .action-title {
             font-weight: 700;
             color: #111827;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             display: flex;
             align-items: center;
+            font-size: 0.95rem;
           }
           .action-title i {
-            margin-right: 8px;
+            margin-right: 6px;
             color: #4f46e5;
           }
           .action-list {
@@ -176,32 +179,34 @@ app.post('/book-appointment', async (req, res) => {
             padding: 0;
           }
           .action-list li {
-            padding: 0.5rem 0;
+            padding: 0.4rem 0;
             display: flex;
             align-items: center;
             color: #4b5563;
+            font-size: 0.9rem;
           }
           .action-list li::before {
             content: '✓';
             background: #4f46e5;
             color: white;
             border-radius: 50%;
-            width: 20px;
-            height: 20px;
+            width: 16px;
+            height: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
-            margin-right: 10px;
+            font-size: 10px;
+            margin-right: 8px;
             font-weight: bold;
           }
           .contact-info {
             background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
             color: white;
-            padding: 1.5rem;
-            border-radius: 10px;
+            padding: 1rem;
+            border-radius: 8px;
             text-align: center;
-            margin: 1.5rem 0;
+            margin: 1rem 0;
+            font-size: 0.9rem;
           }
           .whatsapp-link {
             color: #ffffff;
@@ -210,44 +215,47 @@ app.post('/book-appointment', async (req, res) => {
             display: inline-flex;
             align-items: center;
             background: rgba(255, 255, 255, 0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
             transition: all 0.3s ease;
             margin-top: 0.5rem;
+            font-size: 0.9rem;
           }
           .whatsapp-link:hover {
             background: rgba(255, 255, 255, 0.3);
             transform: translateY(-2px);
           }
           .whatsapp-link i {
-            margin-right: 8px;
+            margin-right: 6px;
           }
           .footer {
             background: #1f2937;
             color: #f9fafb;
-            padding: 2rem;
+            padding: 1rem;
             text-align: center;
+            font-size: 0.85rem;
           }
           .footer-logo {
             font-weight: 700;
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
           }
           .footer-tagline {
             color: #9ca3af;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
           }
           .footer-links {
             display: flex;
             justify-content: center;
-            gap: 1rem;
-            margin: 1rem 0;
+            gap: 0.8rem;
+            margin: 0.8rem 0;
+            flex-wrap: wrap;
           }
           .footer-links a {
             color: #d1d5db;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             transition: color 0.3s;
           }
           .footer-links a:hover {
@@ -255,16 +263,18 @@ app.post('/book-appointment', async (req, res) => {
           }
           .copyright {
             color: #6b7280;
-            font-size: 0.85rem;
-            margin-top: 1rem;
+            font-size: 0.75rem;
+            margin-top: 0.8rem;
             border-top: 1px solid #374151;
-            padding-top: 1rem;
+            padding-top: 0.8rem;
           }
           @media (max-width: 600px) {
-            body { padding: 10px; }
-            .content { padding: 1.5rem; }
             .detail-grid { grid-template-columns: 1fr; }
-            .footer-links { flex-wrap: wrap; }
+            .detail-item { flex-direction: column; align-items: flex-start; }
+            .detail-label { min-width: auto; margin-bottom: 0.2rem; }
+            .detail-value { width: 100%; }
+            .action-list li { flex-direction: column; align-items: flex-start; }
+            .action-list li::before { margin-bottom: 0.2rem; }
           }
         </style>
       </head>
@@ -288,8 +298,8 @@ app.post('/book-appointment', async (req, res) => {
             
             <!-- Appointment Details Card -->
             <div class="appointment-card">
-              <h3 style="color: #111827; margin-bottom: 1rem; font-weight: 700;">
-                <i class="fas fa-calendar-check" style="color: #4f46e5; margin-right: 8px;"></i>
+              <h3 style="color: #111827; margin-bottom: 0.8rem; font-weight: 700;">
+                <i class="fas fa-calendar-check" style="color: #4f46e5; margin-right: 6px;"></i>
                 Appointment Details
               </h3>
               
@@ -348,7 +358,7 @@ app.post('/book-appointment', async (req, res) => {
             
             <!-- Quick Contact -->
             <div class="contact-info">
-              <div style="font-weight: 600; margin-bottom: 0.5rem;">Quick Contact Patient</div>
+              <div style="font-weight: 600; margin-bottom: 0.3rem;">Quick Contact Patient</div>
               <a href="https://wa.me/91${phone.replace(/\D/g, '')}" class="whatsapp-link" target="_blank">
                 <i class="fab fa-whatsapp"></i>
                 Message on WhatsApp
@@ -392,7 +402,7 @@ app.post('/book-appointment', async (req, res) => {
             background: #f4f5f7;
             color: #1f2937;
             line-height: 1.6;
-            padding: 20px;
+            padding: 10px;
           }
           .email-container {
             max-width: 650px;
@@ -405,7 +415,7 @@ app.post('/book-appointment', async (req, res) => {
           .header {
             background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
             color: #ffffff;
-            padding: 2rem;
+            padding: 1rem;
             text-align: center;
             position: relative;
           }
@@ -417,54 +427,54 @@ app.post('/book-appointment', async (req, res) => {
             transform: translateX(-50%);
             width: 0;
             height: 0;
-            border-left: 20px solid transparent;
-            border-right: 20px solid transparent;
-            border-top: 20px solid #4338ca;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 15px solid #4338ca;
           }
           .logo {
             font-weight: 700;
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
           }
           .header-subtitle {
             opacity: 0.9;
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
           }
           .success-badge {
             background: rgba(255, 255, 255, 0.2);
-            padding: 0.75rem 1.5rem;
-            border-radius: 25px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
             display: inline-flex;
             align-items: center;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.9rem;
           }
           .success-badge i {
-            margin-right: 8px;
-            font-size: 1.1rem;
+            margin-right: 6px;
+            font-size: 1rem;
           }
           .content {
-            padding: 2rem;
+            padding: 1.5rem;
             background: #ffffff;
           }
           .greeting {
             color: #1f2937;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
           }
           .intro-text {
             color: #4b5563;
-            margin-bottom: 2rem;
-            font-size: 1rem;
-            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
           }
           .appointment-summary {
             background: #f8f9fa;
-            border-radius: 12px;
-            padding: 2rem;
-            margin: 2rem 0;
-            border-left: 4px solid #4f46e5;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 3px solid #4f46e5;
             position: relative;
           }
           .appointment-summary::before {
@@ -472,47 +482,48 @@ app.post('/book-appointment', async (req, res) => {
             position: absolute;
             top: -5px;
             right: -5px;
-            width: 20px;
-            height: 20px;
+            width: 15px;
+            height: 15px;
             background: #10b981;
             border-radius: 50%;
-            border: 3px solid #ffffff;
+            border: 2px solid #ffffff;
           }
           .summary-title {
             color: #111827;
             font-weight: 700;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             display: flex;
             align-items: center;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
           }
           .summary-title i {
-            margin-right: 10px;
+            margin-right: 8px;
             color: #4f46e5;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
           }
           .appointment-details {
             display: grid;
-            gap: 1rem;
+            gap: 0.5rem;
           }
           .detail-row {
             display: flex;
             align-items: center;
-            padding: 0.75rem;
+            padding: 0.5rem;
             background: #ffffff;
-            border-radius: 8px;
+            border-radius: 6px;
             border: 1px solid #e5e7eb;
+            font-size: 0.9rem;
           }
           .detail-icon {
             color: #4f46e5;
-            font-size: 1.1rem;
-            width: 24px;
-            margin-right: 12px;
+            font-size: 1rem;
+            width: 20px;
+            margin-right: 8px;
           }
           .detail-label {
             font-weight: 600;
             color: #374151;
-            min-width: 100px;
+            min-width: 90px;
           }
           .detail-value {
             color: #1f2937;
@@ -520,20 +531,20 @@ app.post('/book-appointment', async (req, res) => {
           }
           .process-section {
             background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
-            border-radius: 12px;
-            padding: 2rem;
-            margin: 2rem 0;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
           }
           .process-title {
             color: #111827;
             font-weight: 700;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             display: flex;
             align-items: center;
-            font-size: 1.1rem;
+            font-size: 1rem;
           }
           .process-title i {
-            margin-right: 10px;
+            margin-right: 8px;
             color: #4f46e5;
           }
           .process-steps {
@@ -543,11 +554,12 @@ app.post('/book-appointment', async (req, res) => {
           }
           .process-steps li {
             counter-increment: step-counter;
-            padding: 1rem 0;
+            padding: 0.8rem 0;
             display: flex;
             align-items: flex-start;
             color: #4b5563;
             border-bottom: 1px solid #d1d5db;
+            font-size: 0.9rem;
             position: relative;
           }
           .process-steps li:last-child {
@@ -558,35 +570,36 @@ app.post('/book-appointment', async (req, res) => {
             background: #4f46e5;
             color: white;
             border-radius: 50%;
-            width: 28px;
-            height: 28px;
+            width: 20px;
+            height: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            font-size: 14px;
-            margin-right: 15px;
+            font-size: 12px;
+            margin-right: 10px;
             flex-shrink: 0;
             margin-top: 2px;
           }
           .contact-card {
             background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
             color: white;
-            padding: 2rem;
-            border-radius: 12px;
+            padding: 1.5rem;
+            border-radius: 10px;
             text-align: center;
-            margin: 2rem 0;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
           }
           .contact-title {
             font-weight: 700;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
             display: flex;
             align-items: center;
             justify-content: center;
           }
           .contact-title i {
-            margin-right: 10px;
+            margin-right: 8px;
           }
           .whatsapp-btn {
             color: #ffffff;
@@ -595,43 +608,44 @@ app.post('/book-appointment', async (req, res) => {
             display: inline-flex;
             align-items: center;
             background: rgba(255, 255, 255, 0.2);
-            padding: 1rem 2rem;
-            border-radius: 25px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 20px;
             transition: all 0.3s ease;
-            margin-top: 1rem;
-            font-size: 1.1rem;
+            margin-top: 0.8rem;
+            font-size: 0.9rem;
           }
           .whatsapp-btn:hover {
             background: rgba(255, 255, 255, 0.3);
             transform: translateY(-2px);
           }
           .whatsapp-btn i {
-            margin-right: 10px;
-            font-size: 1.2rem;
+            margin-right: 8px;
+            font-size: 1.1rem;
           }
           .footer {
             background: #1f2937;
             color: #f9fafb;
-            padding: 2rem;
+            padding: 1rem;
             text-align: center;
+            font-size: 0.85rem;
           }
           .footer-logo {
             font-weight: 700;
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
           }
           .footer-tagline {
             color: #9ca3af;
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
+            font-size: 0.8rem;
+            margin-bottom: 0.8rem;
           }
           .social-links {
-            margin: 1.5rem 0;
+            margin: 0.8rem 0;
           }
           .social-links a {
             color: #d1d5db;
-            font-size: 1.4rem;
-            margin: 0 12px;
+            font-size: 1.2rem;
+            margin: 0 8px;
             text-decoration: none;
             transition: color 0.3s;
           }
@@ -641,14 +655,14 @@ app.post('/book-appointment', async (req, res) => {
           .footer-links {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin: 1.5rem 0;
+            gap: 0.8rem;
+            margin: 0.8rem 0;
             flex-wrap: wrap;
           }
           .footer-links a {
             color: #d1d5db;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             transition: color 0.3s;
           }
           .footer-links a:hover {
@@ -656,17 +670,20 @@ app.post('/book-appointment', async (req, res) => {
           }
           .copyright {
             color: #6b7280;
-            font-size: 0.85rem;
-            margin-top: 1.5rem;
+            font-size: 0.75rem;
+            margin-top: 0.8rem;
             border-top: 1px solid #374151;
-            padding-top: 1.5rem;
+            padding-top: 0.8rem;
           }
           @media (max-width: 600px) {
-            body { padding: 10px; }
-            .content { padding: 1.5rem; }
-            .appointment-summary { padding: 1.5rem; }
-            .contact-card { padding: 1.5rem; }
-            .footer-links { flex-direction: column; gap: 0.5rem; }
+            .appointment-details { grid-template-columns: 1fr; }
+            .detail-row { flex-direction: column; align-items: flex-start; }
+            .detail-label { min-width: auto; margin-bottom: 0.2rem; }
+            .detail-value { width: 100%; }
+            .process-steps li { flex-direction: column; align-items: flex-start; }
+            .process-steps li::before { margin-bottom: 0.2rem; }
+            .contact-title { flex-direction: column; }
+            .whatsapp-btn { width: 100%; text-align: center; }
           }
         </style>
       </head>
@@ -747,7 +764,7 @@ app.post('/book-appointment', async (req, res) => {
                 <i class="fas fa-headset"></i>
                 Need Assistance?
               </div>
-              <div style="margin-bottom: 1rem; opacity: 0.9;">
+              <div style="margin-bottom: 0.5rem; opacity: 0.9;">
                 Our friendly team is here to help with any questions or concerns you may have about your upcoming appointment.
               </div>
               <a href="https://wa.me/918896006599" class="whatsapp-btn" target="_blank">
@@ -756,8 +773,8 @@ app.post('/book-appointment', async (req, res) => {
               </a>
             </div>
             
-            <div style="background: #f0f9ff; padding: 1.5rem; border-radius: 10px; border-left: 4px solid #0284c7; color: #0c4a6e; margin-top: 2rem;">
-              <strong><i class="fas fa-info-circle" style="margin-right: 8px;"></i>Important Note:</strong><br>
+            <div style="background: #f0f9ff; padding: 1rem; border-radius: 8px; border-left: 3px solid #0284c7; color: #0c4a6e; margin-top: 1.5rem; font-size: 0.9rem;">
+              <strong><i class="fas fa-info-circle" style="margin-right: 6px;"></i>Important Note:</strong><br>
               Please bring any previous eye test reports or prescription glasses to your appointment. This helps us provide you with the most accurate assessment and personalized care.
             </div>
           </div>
