@@ -1,19 +1,12 @@
-const nodemailer = require('nodemailer');
-
 const express = require('express');
 const app = express.Router();
+const SibApiV3Sdk = require("sib-api-v3-sdk");
 
-
-// Nodemailer configuration
-const transporter = nodemailer.createTransport({
-  host: "smtp-relay.brevo.com",
-  port: 587,
-  secure: false,
-  auth: {
-    user: process.env.BREVO_USER,
-    pass: process.env.BREVO_PASS,
-  },
-});
+// Initialize Brevo API client
+let defaultClient = SibApiV3Sdk.ApiClient.instance;
+let apiKey = defaultClient.authentications["api-key"];
+apiKey.apiKey = process.env.BREVO_API_KEY;
+let apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
 
 // API endpoint to handle appointment booking
 app.post('/book-appointment', async (req, res) => {
@@ -851,7 +844,6 @@ app.post('/book-appointment', async (req, res) => {
               </a>
             </div>
             
-            
             <div class="copyright">
               © ${new Date().getFullYear()} Harshit Eye Care & Opticals. All rights reserved.<br>
               <strong>Payment Options:</strong> UPI • Paytm • Credit Card<br>
@@ -863,26 +855,27 @@ app.post('/book-appointment', async (req, res) => {
       </html>
     `;
 
-    // Send email to admin
-    const adminMailOptions = {
-      from: process.env.EMAIL_USER,
-      to: process.env.ADMIN_MAIL, // Admin email
+    // Configure email for admin
+    const adminEmail = {
+      sender: { email: "support@harshiteyecare.com", name: "Harshit Eye Care and Opticals" },
+      to: [{ email: process.env.ADMIN_MAIL, name: "Admin" }],
       subject: `🗓️ New Appointment Request - ${name}`,
-      html: adminEmailHtml
+      htmlContent: adminEmailHtml
     };
 
-    // Send confirmation email to patient
-    const patientMailOptions = {
-      from: process.env.EMAIL_USER,
-      to: email,
+    // Configure email for patient
+    const patientEmail = {
+      sender: { email: "support@harshiteyecare.com", name: "Harshit Eye Care and Opticals" },
+      to: [{ email: email, name: name }],
       subject: '✅ Appointment Request Received - Harshit Eye Care',
-      html: patientEmailHtml
+      htmlContent: patientEmailHtml
     };
 
-    // Send both emails
-
-    await transporter.sendMail(adminMailOptions);
-    await transporter.sendMail(patientMailOptions);
+    // Send both emails using Brevo API
+    await Promise.all([
+      apiInstance.sendTransacEmail(adminEmail),
+      apiInstance.sendTransacEmail(patientEmail)
+    ]);
 
     res.json({
       success: true,
