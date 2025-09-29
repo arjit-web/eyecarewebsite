@@ -7,6 +7,7 @@ let defaultClient = SibApiV3Sdk.ApiClient.instance;
 let apiKey = defaultClient.authentications["api-key"];
 apiKey.apiKey = process.env.BREVO_API_KEY;
 let apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
+app.use(express.json());
 
 // API endpoint to handle appointment booking
 app.post('/book-appointment', async (req, res) => {
