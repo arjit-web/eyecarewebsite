@@ -135,6 +135,7 @@ app.post('/book-appointment', async (req, res) => {
           .detail-item {
             display: flex;
             align-items: center;
+            flex-wrap: wrap;
             padding: 0.5rem;
             background: #ffffff;
             border-radius: 6px;
@@ -155,6 +156,9 @@ app.post('/book-appointment', async (req, res) => {
           .detail-value {
             color: #1f2937;
             font-weight: 500;
+            word-break: break-word;
+            overflow-wrap: anywhere;
+            max-width: 100%;
           }
           .action-section {
             background: #f3f4f6;
@@ -272,7 +276,7 @@ app.post('/book-appointment', async (req, res) => {
             .detail-grid { grid-template-columns: 1fr; }
             .detail-item { flex-direction: column; align-items: flex-start; }
             .detail-label { min-width: auto; margin-bottom: 0.2rem; }
-            .detail-value { width: 100%; }
+            .detail-value { width: 100%; word-break: break-word; overflow-wrap: anywhere; }
             .action-list li { flex-direction: column; align-items: flex-start; }
             .action-list li::before { margin-bottom: 0.2rem; }
           }
@@ -508,6 +512,7 @@ app.post('/book-appointment', async (req, res) => {
           .detail-row {
             display: flex;
             align-items: center;
+            flex-wrap: wrap;
             padding: 0.5rem;
             background: #ffffff;
             border-radius: 6px;
@@ -528,6 +533,9 @@ app.post('/book-appointment', async (req, res) => {
           .detail-value {
             color: #1f2937;
             font-weight: 500;
+            word-break: break-word;
+            overflow-wrap: anywhere;
+            max-width: 100%;
           }
           .process-section {
             background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
@@ -679,7 +687,7 @@ app.post('/book-appointment', async (req, res) => {
             .appointment-details { grid-template-columns: 1fr; }
             .detail-row { flex-direction: column; align-items: flex-start; }
             .detail-label { min-width: auto; margin-bottom: 0.2rem; }
-            .detail-value { width: 100%; }
+            .detail-value { width: 100%; word-break: break-word; overflow-wrap: anywhere; }
             .process-steps li { flex-direction: column; align-items: flex-start; }
             .process-steps li::before { margin-bottom: 0.2rem; }
             .contact-title { flex-direction: column; }
