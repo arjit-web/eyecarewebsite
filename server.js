@@ -1,7 +1,6 @@
 // server.js
 const express = require("express");
 const path = require("path");
-
 const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(express.json());
@@ -50,6 +49,37 @@ app.get("/shop", (req, res) => {
 
 app.get("/favicon.ico", (req, res) => {
   res.sendFile(path.join(__dirname, "images/favicon.png"));
+});
+
+// robots.txt
+app.get("/robots.txt", (req, res) => {
+  res.type("text/plain").send(
+    `User-agent: *\nAllow: /\nSitemap: ${req.protocol}://${req.get('host')}/sitemap.xml\n`
+  );
+});
+
+// sitemap.xml
+app.get("/sitemap.xml", (req, res) => {
+  const host = `${req.protocol}://${req.get('host')}`;
+  const urls = [
+    "/",
+    "/about",
+    "/testing",
+    "/appointment",
+    "/services",
+    "/shop",
+    "/blog",
+    "/blog/post/1",
+    "/blog/post/2",
+    "/blog/post/3",
+    "/contact"
+  ];
+  const now = new Date().toISOString();
+  const body = `<?xml version="1.0" encoding="UTF-8"?>\n` +
+    `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">` +
+    urls.map(u => `\n  <url>\n    <loc>${host}${u}</loc>\n    <lastmod>${now}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>${u === '/' ? '1.0' : '0.8'}</priority>\n  </url>`).join("") +
+    `\n</urlset>`;
+  res.type("application/xml").send(body);
 });
 
 
