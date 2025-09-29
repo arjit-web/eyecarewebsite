@@ -1,6 +1,7 @@
 // server.js
 const express = require("express");
 const path = require("path");
+const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(express.json());
@@ -52,14 +53,14 @@ app.get("/favicon.ico", (req, res) => {
 });
 
 // robots.txt
-app.get("/robots.txt", (req, res) => {
+app.get("/robots.txt", cors(), (req, res) => {
   res.type("text/plain").send(
     `User-agent: *\nAllow: /\nSitemap: ${req.protocol}://${req.get('host')}/sitemap.xml\n`
   );
 });
 
 // sitemap.xml
-app.get("/sitemap.xml", (req, res) => {
+app.get("/sitemap.xml", cors(), (req, res) => {
   const host = `${req.protocol}://${req.get('host')}`;
   const urls = [
     "/",
