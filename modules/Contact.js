@@ -1,18 +1,12 @@
-const nodemailer = require('nodemailer');
 const express = require('express');
 const router = express.Router();
+const SibApiV3Sdk = require("sib-api-v3-sdk");
 
-// Nodemailer configuration
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-  connectionTimeout: 100000 // 10 seconds timeout
-});
+// Initialize Brevo API client (align with Appointment setup)
+let defaultClient = SibApiV3Sdk.ApiClient.instance;
+let apiKey = defaultClient.authentications["api-key"];
+apiKey.apiKey = process.env.BREVO_API_KEY;
+let apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
 
 // API endpoint to handle contact form submission
 router.post('/contact', async (req, res) => {
@@ -25,6 +19,11 @@ router.post('/contact', async (req, res) => {
         success: false,
         message: 'All fields are required'
       });
+    }
+
+    // Validate environment variables
+    if (!process.env.ADMIN_MAIL || !process.env.BREVO_API_KEY) {
+      throw new Error('Missing required environment variables');
     }
 
     // Email template for admin notification
@@ -129,6 +128,7 @@ router.post('/contact', async (req, res) => {
           .detail-item {
             display: flex;
             align-items: center;
+            flex-wrap: wrap;
             padding: 0.75rem;
             background: #ffffff;
             border-radius: 8px;
@@ -152,6 +152,8 @@ router.post('/contact', async (req, res) => {
             color: #1f2937;
             font-weight: 500;
             word-break: break-word;
+            overflow-wrap: anywhere;
+            max-width: 100%;
           }
           
           .action-section {
@@ -281,6 +283,9 @@ router.post('/contact', async (req, res) => {
             body { padding: 10px; }
             .content { padding: 1.5rem; }
             .detail-grid { grid-template-columns: 1fr; }
+            .detail-item { flex-direction: column; align-items: flex-start; }
+            .detail-label { min-width: auto; margin-bottom: 0.25rem; }
+            .detail-value { width: 100%; word-break: break-word; overflow-wrap: anywhere; }
             .footer-links { flex-wrap: wrap; }
           }
         </style>
@@ -516,6 +521,7 @@ router.post('/contact', async (req, res) => {
           .detail-row {
             display: flex;
             align-items: center;
+            flex-wrap: wrap;
             padding: 0.75rem;
             background: #ffffff;
             border-radius: 8px;
@@ -539,6 +545,8 @@ router.post('/contact', async (req, res) => {
             color: #1f2937;
             font-weight: 500;
             word-break: break-word;
+            overflow-wrap: anywhere;
+            max-width: 100%;
           }
           
           .process-section {
@@ -712,6 +720,9 @@ router.post('/contact', async (req, res) => {
             .content { padding: 1.5rem; }
             .query-summary { padding: 1.5rem; }
             .contact-card { padding: 1.5rem; }
+            .detail-row { flex-direction: column; align-items: flex-start; }
+            .detail-label { min-width: auto; margin-bottom: 0.25rem; }
+            .detail-value { width: 100%; word-break: break-word; overflow-wrap: anywhere; }
             .footer-links { flex-direction: column; gap: 0.5rem; }
           }
         </style>
@@ -826,25 +837,27 @@ router.post('/contact', async (req, res) => {
       </html>
     `;
 
-    // Send email to admin
-    const adminMailOptions = {
-      from: process.env.EMAIL_USER,
-      to: process.env.ADMIN_MAIL,
+    // Configure email for admin (Brevo)
+    const adminEmail = {
+      sender: { email: "support@harshiteyecare.com", name: "Harshit Eye Care and Opticals" },
+      to: [{ email: process.env.ADMIN_MAIL, name: "Admin" }],
       subject: `📧 New Contact Query from ${name}`,
-      html: adminEmailHtml
+      htmlContent: adminEmailHtml
     };
 
-    // Send confirmation email to user
-    const userMailOptions = {
-      from: process.env.EMAIL_USER,
-      to: email,
+    // Configure email for user (Brevo)
+    const userEmail = {
+      sender: { email: "support@harshiteyecare.com", name: "Harshit Eye Care and Opticals" },
+      to: [{ email: email, name: name }],
       subject: '✅ Contact Query Received - Harshit Eye Care',
-      html: userEmailHtml
+      htmlContent: userEmailHtml
     };
 
-    // Send both emails
-    await transporter.sendMail(adminMailOptions);
-    await transporter.sendMail(userMailOptions);
+    // Send both emails using Brevo API
+    await Promise.all([
+      apiInstance.sendTransacEmail(adminEmail),
+      apiInstance.sendTransacEmail(userEmail)
+    ]);
 
     res.json({
       success: true,
